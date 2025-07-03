@@ -40,8 +40,8 @@ jobs:
             - name: Deploy to EC2
               run: |
                 ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-                    docker stop fastapi-container || true
-                    docker rm fastapi-container || true
+                    docker stop new_api-container || true
+                    docker rm new_api-container || true
                     docker pull ${{ secrets.DOCKER_USERNAME }}/new_api:latest
                     docker run -d --name new_api-container -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/new_api:latest
                 EOF

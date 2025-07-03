@@ -29,6 +29,7 @@ jobs:
                 tags: ${{secrets.DOCKER_USERNAME}}/new_api:latest
 
     deploy-aws:
+        needs: build-push-job
         runs-on: ubuntu-latest
 
         steps:
